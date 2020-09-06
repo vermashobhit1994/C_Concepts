@@ -1,0 +1,30 @@
+1. gcc -c -fPIC *.c
+-fPIC option to generate the position independent code i.e a code which can 
+run on any address without modified by linker.
+generate the .o files.
+
+2. gcc -shared *.o -o libarithmath.so
+create a shared library of name arithmath.
+-shared option to specify that create a shared library.
+
+3. objdump -d -M intel libarithmath.so | less
+To see the dissassembly of functions used.
+
+4. gcc -c driver_program.c -I../
+To specify the path of header file as ../ and compile the driver_program.c 
+
+5. gcc driver_program.o -o myexe -I../ -larithmath -L../
+../ in -L option to specify the path of libarithmath.so file.
+-larithmath for the library file used.
+myexe is final executable filename.
+
+6. ldd myexe
+To list the dynamic dependencies of executable file i.e so file.
+
+7. nm myexe
+To list the symbols used.
+Here the symbols i.e the name of functions are still undefined.
+
+8. export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:path to .so file 
+To tell the dynamic linker or loader to add the path to LD_LIBRARY_PATH environment
+variable so that it can link it.

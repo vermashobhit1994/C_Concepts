@@ -1,0 +1,4 @@
+nm swap.o -> to see the symbol table of swap.o
+gcc --static *.o -o myexe_static  -> To create a static linked output file of name
+                                     myexe_static 
+                                     

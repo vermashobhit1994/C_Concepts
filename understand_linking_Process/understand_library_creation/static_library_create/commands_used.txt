@@ -1,0 +1,34 @@
+1. gcc -c *.c  -> To create the .o files from .c files
+
+2. ar -rs libarithmath.a *.o
+To make a library of name arithmath with lib denotes
+that it is library file. 
+-r denotes that insert the .o files to archieve.
+-s denotes that add an index to archieve.
+
+
+3. ar -t libarithmath.a
+To see the contents of libarithmath
+
+4. gcc -c driver_program.c -I../
+here ../ in -I means header file from previous path.
+Then it will generate the driver_program.o file.
+
+5. nm driver_program.o 
+To get the global symbols and function names.
+Here all the function names and external library names are undefined.
+
+6. gcc driver_program.o -o myexe
+Make the executable file for the driver_program.o.
+Here the libc.a functions (for e.g printf()) is automatically linked by linker
+but the functions (e.g myadd,mysub,mymul,mydiv ) must be externally linked.
+
+7. gcc driver_program.o -o myexe -larithmath
+link the arithmath with the driver_program.o file.
+This gives error since we don't know where the libarithmath.a file is .
+
+8. gcc driver_program.o -o myexe -larithmath -L../
+here -L is used to search for libarithmath.a libray in ../ location.    
+
+NOte : While linking the order of arguments matter so always put the library 
+file at end .

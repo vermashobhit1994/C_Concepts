@@ -1,0 +1,3 @@
+Command used: ar -x /usr/lib/x86_64-linux-gnu/libc.a . -x is for extract the file. 
+NOte : here we're extracting the static libc library
+ls | grep printf.o -> to find the printf.o file
