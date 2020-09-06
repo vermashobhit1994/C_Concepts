@@ -1,0 +1,60 @@
+1. Command to generate the preprocessed file
+   gcc -E hello.c 1>hello.i
+
+Where -E is for prEprocessor directive. 1 is for stdout .
+here we're redirect from stdout to hello.i file.
+
+   gcc -E hello.c -> redirect to stdout
+   
+2. less hello.i  -> to see contents of hello.i one page at time.
+
+3. gcc -S hello.i 
+ 
+   To generate the assembly file.
+
+4. gcc -c hello.s
+    Convert from assembly to machine dependent opcode.
+   
+    This hello.o contains:
+    a) symbol table : contains the name, type and relative address of global variables.
+                      contains the name and relative address of functions used.
+                      contains the name of external functions . Eg printf()
+
+5. Linker
+    links the standard library functions with your program.
+     takes all .o files symbol table and create a global symbol table.
+
+6.  file hello.c
+    To check the type of file.
+
+7.  readelf -l hello.o
+
+    To read the hello.o program headers
+
+8. readelf -h hello.o
+    To read the hello.o file headers
+
+9. readelf -S hello.o
+    To read the hello.o Section headers
+
+10. readelf -s hello.o 
+    To read the hello.o symbol table.
+
+11. od hello.o
+    To display the hello.o in octal format
+
+12. od -h hello.o
+    To display the hello.o in hexadecimal format.
+
+13. objdump -d hello.o 
+    To dissamble the hello.o
+
+14. gcc -c *.c -I. 
+  
+    generate the .o files by looking the header file in current working directory(-I i.e include header . means current directory)
+
+15. gcc *.o 
+    Take all .o file and generate the a.out file  
+NOTE: 
+   to generate all intermediate files by hello.c file:
+    gcc -save-temps hello.c
